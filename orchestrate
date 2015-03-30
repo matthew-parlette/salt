@@ -1,0 +1,6 @@
+#!/bin/bash
+test=""
+if [ "$1" = "test" ]; then
+    test="test=True"
+fi
+eval "salt-run state.orchestrate orchestration.salt $test"
