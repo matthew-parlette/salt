@@ -8,6 +8,8 @@ There is one small config to be done in `/etc/salt/master`, add the salt formula
     gitfs_remotes:
       - git://github.com/saltstack-formulas/salt-formula.git
 
+You may also want to setup the roles for your devices, using the example under `nodes` in `pillar.example`
+
 Then run the orchestration with:
 
     $ ./orchestrate

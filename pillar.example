@@ -26,3 +26,9 @@ salt:
       ssl_key: '/etc/pki/tls/certs/localhost.key'
   minion:
     master: salt
+
+nodes:
+  myhost:
+    roles:
+      - server
+      - salt-master
