@@ -13,3 +13,11 @@ salt-minion:
       - salt.pkgrepo
     - require:
       - salt: salt-master
+
+salt-minion-grains:
+  salt.state:
+    - tgt: '*'
+    - sls:
+      - grains
+    - require:
+      - salt: salt-minion

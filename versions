@@ -1,0 +1,2 @@
+#!/bin/bash
+eval "sudo salt-run manage.versions"
