@@ -2,12 +2,12 @@
 {% set packages = ['pkg1','pkg2'] %}
 {% set ppa = None %}
 
-{{ package }}:
+{{ name }}:
   {% if ppa %}
   pkgrepo.managed:
     - ppa: {{ ppa }}
     - require_in:
-      - pkg: {{ package }}
+      - pkg: {{ name }}
   {% endif %}
   pkg.latest:
     - pkgs:
