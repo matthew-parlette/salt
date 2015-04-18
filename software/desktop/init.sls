@@ -1,2 +1,3 @@
 include:
   - .anoise
+  - .atom
