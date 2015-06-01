@@ -4,3 +4,4 @@ if [ "$1" = "test" ]; then
     test="test=True"
 fi
 eval "sudo salt-run state.orchestrate orchestration.salt $test"
+eval "sudo salt-run state.orchestrate orchestration.containers $test"
