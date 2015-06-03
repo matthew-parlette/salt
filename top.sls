@@ -4,3 +4,4 @@ base:
     - openssh
     - openssh.config
     - openssh.auth
+    - software.vagrant
