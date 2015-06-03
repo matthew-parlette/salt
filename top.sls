@@ -5,3 +5,4 @@ base:
     - openssh.config
     - openssh.auth
     - software.vagrant
+    - storage.client
