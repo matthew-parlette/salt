@@ -8,3 +8,4 @@ base:
     - software.virtualbox
     - software.glances
     - storage.client
+    - dotfiles
