@@ -9,3 +9,4 @@ base:
     - software.glances
     - storage.client
     - dotfiles
+    - snmp.conf
