@@ -8,6 +8,7 @@ rabbitmq:
 rabbitmq-config:
   salt.state:
     - tgt: 'role:openstack-controller'
+    - tgt_type: grain
     - sls:
       - rabbitmq.config
     - require:
@@ -47,3 +48,14 @@ openstack-repo:
     - sls:
       - software.openstack.repo
 
+keystone:
+  salt.state:
+    - tgt: 'role:openstack-controller'
+    - tgt_type: grain
+    - sls:
+      - keystone.openrc
+      - keystone.server
+      - keystone.client
+      - keystone.keystone
+    - require:
+      - salt: openstack-repo
