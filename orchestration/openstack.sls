@@ -5,15 +5,6 @@ rabbitmq:
     - sls:
       - rabbitmq
 
-rabbitmq-config:
-  salt.state:
-    - tgt: 'role:openstack-controller'
-    - tgt_type: grain
-    - sls:
-      - rabbitmq.config
-    - require:
-      - salt: rabbitmq
-
 mysql:
   salt.state:
     - tgt: 'role:openstack-controller'
@@ -68,4 +59,3 @@ glance:
       - software.openstack.glance
     - require:
       - salt: keystone
-
