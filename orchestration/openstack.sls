@@ -59,3 +59,13 @@ keystone:
       - keystone.keystone
     - require:
       - salt: openstack-repo
+
+glance:
+  salt.state:
+    - tgt: 'role:openstack-controller'
+    - tgt_type: grain
+    - sls:
+      - software.openstack.glance
+    - require:
+      - salt: keystone
+
