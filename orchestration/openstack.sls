@@ -59,3 +59,14 @@ glance:
       - software.openstack.glance
     - require:
       - salt: keystone
+
+nova-controller:
+  salt.state:
+    - tgt: 'role:openstack-controller'
+    - tgt_type: grain
+    - sls:
+      - software.openstack.nova.controller
+    - require:
+      - salt: keystone
+      - salt: glance
+      - salt: rabbitmq
