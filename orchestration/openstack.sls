@@ -70,3 +70,16 @@ nova-controller:
       - salt: keystone
       - salt: glance
       - salt: rabbitmq
+
+neutron-controller:
+  salt.state:
+    - tgt: 'role:openstack-controller'
+    - tgt_type: grain
+    - sls:
+      - software.openstack.neutron.controller
+    - require:
+      - salt: keystone
+      - salt: glance
+      - salt: rabbitmq
+      - salt: nova-controller
+
