@@ -16,9 +16,10 @@ dotfiles:
       - ssh_known_hosts: dotfiles
       - file: {{ dotfiles_path }}
   cmd.run:
-    - name: {{ dotfiles_path }}/install
+    - name: git submodule update --init --remote --force dotbot;./install
     - user: {{ user }}
     - group: {{ user }}
+    - cwd: {{ dotfiles_path }}
     - require:
       - git: dotfiles
 
