@@ -1,4 +1,4 @@
-{%- set motd_files = ['05-hostname'] %}
+{%- set motd_files = ['05-hostname','15-system-stats'] %}
 {%- set default_files = ['00-header','10-help-text','90-updates-available','91-release-upgrade','98-fsck-at-reboot','98-reboot-required'] %}
 {%- set pkgs = ['figlet'] %}
 {%- set path = '/etc/update-motd.d' %}
