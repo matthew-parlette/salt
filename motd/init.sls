@@ -1,6 +1,6 @@
-{%- set motd_files = ['05-hostname','15-system-stats'] %}
+{%- set motd_files = ['05-hostname','10-screenfetch','15-system-stats'] %}
 {%- set default_files = ['00-header','10-help-text','90-updates-available','91-release-upgrade','98-fsck-at-reboot','98-reboot-required'] %}
-{%- set pkgs = ['figlet'] %}
+{%- set pkgs = ['figlet','screenfetch'] %}
 {%- set path = '/etc/update-motd.d' %}
 
 {%- for file in default_files %}
@@ -21,9 +21,15 @@
     - mode: 755
 {%- endfor %}
 
+screenfetch-repo:
+  pkgrepo.managed:
+    - ppa: djcj/screenfetch
+
 motd-packages:
   pkg.installed:
     - pkgs:
       {%- for pkg in pkgs %}
       - {{ pkg }}
       {%- endfor %}
+    - require:
+      - pkgrepo: screenfetch-repo
