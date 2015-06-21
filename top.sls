@@ -8,6 +8,7 @@ base:
     - storage.client
     - dotfiles
     - snmp.conf
+    - motd
   'role:vagrant':
     - match: grain
     - software.virtualbox
