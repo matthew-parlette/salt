@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Load
+echo -e -n "\n\e[0;35m    Load: \e[0;36m"
+cat /proc/loadavg | cut -d ' ' -f 1-3
+echo -e "\e[0m"
