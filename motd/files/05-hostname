@@ -2,6 +2,6 @@
 
 # Green
 echo -e "\e[0;32m"
-figlet -c `hostname` -f pagga
+figlet -c `hostname` -f pagga || figlet -c `hostname`
 # Reset
 echo -e "\e[0m"
