@@ -14,3 +14,9 @@ openstack-orchestration:
     - tgt: '*'
     - sls:
       - orchestration.openstack
+
+owncloud-orchestration:
+  salt.state:
+    - tgt: '*'
+    - sls:
+      - orchestration.owncloud
