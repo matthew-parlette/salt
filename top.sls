@@ -13,3 +13,7 @@ base:
     - match: grain
     - software.virtualbox
     - software.vagrant
+  'role:desktop':
+    - match: grain
+    - software.i3.gaps
+    - software.i3.i3lock-blur
