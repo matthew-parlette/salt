@@ -1,0 +1,5 @@
+netrc:
+  matt: |
+    machine server.com
+      login user
+      password mypass
