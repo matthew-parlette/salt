@@ -9,6 +9,7 @@ base:
     - dotfiles
     - snmp.conf
     - motd
+    - timestamp
   'role:vagrant':
     - match: grain
     - software.virtualbox
