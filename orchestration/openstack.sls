@@ -71,6 +71,13 @@ nova-controller:
       - salt: glance
       - salt: rabbitmq
 
+sysctl:
+  salt.state:
+    - tgt: 'role:openstack-controller'
+    - tgt_type: grain
+    - sls:
+      - sysctl
+
 neutron-controller:
   salt.state:
     - tgt: 'role:openstack-controller'
@@ -82,4 +89,4 @@ neutron-controller:
       - salt: glance
       - salt: rabbitmq
       - salt: nova-controller
-
+      - salt: sysctl
