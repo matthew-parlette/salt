@@ -1,6 +1,9 @@
 {% set user = "matt" %}
 {% set dotfiles_path = "/home/matt/src/dotfiles" %}
 
+git:
+  pkg.installed
+
 dotfiles:
   ssh_known_hosts.present:
     - name: github.com
@@ -13,6 +16,7 @@ dotfiles:
     - user: {{ user }}
     - target: {{ dotfiles_path }}
     - require:
+      - pkg: git
       - ssh_known_hosts: dotfiles
       - file: {{ dotfiles_path }}
   cmd.run:

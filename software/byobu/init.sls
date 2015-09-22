@@ -1,0 +1,2 @@
+byobu:
+  pkg.installed
