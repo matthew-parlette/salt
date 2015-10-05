@@ -11,7 +11,7 @@ glusterfs-3.5-ppa:
 
 glusterfs-client:
   pkg.installed:
-    - version: 3.5.4-ubuntu1~{{ grains['lsb_distrib_codename'] }}1
+    - version: 3.5.6-ubuntu1~{{ grains['lsb_distrib_codename'] }}1
 
 /media/storage:
   file.directory:
