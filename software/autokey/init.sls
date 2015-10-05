@@ -1,0 +1,2 @@
+autokey-gtk:
+  pkg.installed
