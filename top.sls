@@ -31,3 +31,7 @@ base:
   'role:gaming':
     - match: grain
     - software.steam
+    - software.mumble
+  'role:mumble-server':
+    - match: grain
+    - software.mumble.server
