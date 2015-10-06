@@ -1,0 +1,6 @@
+mumble:
+  server:
+    config:
+      welcometext: Welcome to my server
+      port: 12345
+      serverpassword: mysecurepassword
