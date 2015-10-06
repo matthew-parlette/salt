@@ -1,10 +1,13 @@
 include:
   - software.i3
 
+# ruby-ronn for i3blocks
+# acpi for i3blocks battery script
 i3-blocks-prerequisites:
   pkg.installed:
     - pkgs:
       - ruby-ronn
+      - acpi
 
 /tmp/src/i3blocks:
   file.directory:
