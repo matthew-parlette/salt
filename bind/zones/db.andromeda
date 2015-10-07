@@ -9,35 +9,7 @@ andromeda		IN SOA	ns.andromeda. ns.andromeda. (
 				)
 			NS	ns.andromeda.
 $ORIGIN andromeda.
-$TTL 60	; 1 minute
-android-490ee55dcf9ccd56 A	192.168.1.185
-			TXT	"31e989d7e6f4b9de1489062dc8c158ba02"
-android-595c508f1fb43f9	A	192.168.1.160
-			TXT	"006f2468e9a326c7f3a48214b0476508e6"
-enterprise-01		A	192.168.1.51
-			TXT	"000cda257d47ef00c57d658ecb779680c2"
-file01			A	192.168.1.71
-			TXT	"003a1d19714710b3ea1e06864ccbdb932e"
-$TTL 604800	; 1 week
 gateway			A	192.168.1.1
-$TTL 60	; 1 minute
-master			A	192.168.1.198
-			TXT	"0085ddd2468cac0b5bf2b263d38dd411dd"
-nova			A	192.168.1.143
-			TXT	"0046f364480b0893777bf288d05dfc2103"
-$TTL 604800	; 1 week
 ns			A	192.168.1.4
-$TTL 60	; 1 minute
-oberth			A	192.168.1.151
-			TXT	"003bb2fa80d05f7406b7e3d02834f0b6f1"
-$TTL 604800	; 1 week
 pegasus			A	192.168.1.4
-$TTL 604800	; 1 week
 salt			A	192.168.1.4
-$TTL 60	; 1 minute
-SmartThings		A	192.168.1.194
-			TXT	"007944286449871c53a9c124c4e5de233a"
-SonosZB			A	192.168.1.164
-			TXT	"31e9dcaa682fafb0211ed8377921e2548c"
-SonosZP			A	192.168.1.127
-			TXT	"31628fbe0f164ab7df703d34494e31b872"
