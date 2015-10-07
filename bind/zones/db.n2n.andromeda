@@ -1,0 +1,18 @@
+$ORIGIN .
+$TTL 604800	; 1 week
+andromeda		IN SOA	ns.n2n.andromeda. ns.n2n.andromeda. (
+				20147179   ; serial
+				604800     ; refresh (1 week)
+				86400      ; retry (1 day)
+				2419200    ; expire (4 weeks)
+				604800     ; minimum (1 week)
+				)
+			NS	ns.n2n.andromeda.
+$ORIGIN n2n.andromeda.
+$TTL 60	; 1 minute
+enterprise-01		A	10.1.2.51
+file01			A	10.1.2.71
+nova			A	10.1.2.10
+ns			A	10.1.2.5
+pegasus			A	10.1.2.5
+salt			A	10.1.2.5

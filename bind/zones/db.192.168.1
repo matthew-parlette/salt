@@ -1,0 +1,23 @@
+$ORIGIN .
+$TTL 86400	; 1 day
+1.168.192.in-addr.arpa	IN SOA	ns.local. ns.local. (
+				20145585   ; serial
+				7200       ; refresh (2 hours)
+				3600       ; retry (1 hour)
+				604800     ; expire (1 week)
+				86400      ; minimum (1 day)
+				)
+			NS	pegasus.local.
+$ORIGIN 1.168.192.in-addr.arpa.
+$TTL 60	; 1 minute
+127			PTR	SonosZP.andromeda.
+143			PTR	nova.andromeda.
+151			PTR	oberth.andromeda.
+154			PTR	SEPA41875289BC4.andromeda.
+160			PTR	android-595c508f1fb43f9.andromeda.
+164			PTR	SonosZB.andromeda.
+185			PTR	android-490ee55dcf9ccd56.andromeda.
+194			PTR	SmartThings.andromeda.
+198			PTR	master.andromeda.
+51			PTR	enterprise-01.andromeda.
+71			PTR	file01.andromeda.
