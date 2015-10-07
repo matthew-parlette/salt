@@ -15,6 +15,9 @@ base:
     - software.byobu
     - software.vim
     - timestamp
+  'role:dns-master':
+    - match: grain
+    - bind.config
   'role:vagrant':
     - match: grain
     - software.virtualbox
