@@ -13,3 +13,4 @@ gateway			A	192.168.1.1
 ns			A	192.168.1.4
 pegasus			A	192.168.1.4
 salt			A	192.168.1.4
+zenoss5.controlcenter   A       controlcenter
