@@ -35,15 +35,21 @@ base:
     - match: grain
     - software.steam
     - software.mumble
-  'role:mumble-server':
-    - match: grain
-    - software.mumble.server
   'role:minecraft-server':
     - match: grain
     - game.minecraft.server
+    - ddclient
   'role:minecraft-map-renderer':
     - match: grain
-    - game.minecraft.render-map
+    - game.minecraft.map.render
   'role:minecraft-map-host':
     - match: grain
-    - game.minecraft.map
+    - game.minecraft.map.host
+    - ddclient
+  'role:ask-server':
+    - match: grain
+    - ask.server
+    - ddclient
+  'role:haproxy':
+    - match: grain
+    - haproxy
