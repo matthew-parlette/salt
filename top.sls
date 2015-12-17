@@ -53,3 +53,6 @@ base:
   'role:haproxy':
     - match: grain
     - haproxy
+  'role:mirror':
+    - match: grain
+    - mirror
