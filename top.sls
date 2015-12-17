@@ -8,13 +8,15 @@ base:
     - openssh
     - openssh.config
     - openssh.auth
-    - storage.client
     - dotfiles
     - snmp.conf
     - motd
     - software.byobu
     - software.vim
     - timestamp
+  'role:storage-client':
+    - match: grain
+    - storage.client
   'role:dns-master':
     - match: grain
     - bind.config
