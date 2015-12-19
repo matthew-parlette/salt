@@ -10,10 +10,12 @@ base:
     - openssh.auth
     - dotfiles
     - snmp.conf
-    - motd
     - software.byobu
     - software.vim
     - timestamp
+  'os:Ubuntu':
+    - match: grain
+    - motd
   'role:storage-client':
     - match: grain
     - storage.client
