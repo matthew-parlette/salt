@@ -8,13 +8,17 @@ base:
     - openssh
     - openssh.config
     - openssh.auth
-    - storage.client
     - dotfiles
     - snmp.conf
-    - motd
     - software.byobu
     - software.vim
     - timestamp
+  'os:Ubuntu':
+    - match: grain
+    - motd
+  'role:storage-client':
+    - match: grain
+    - storage.client
   'role:dns-master':
     - match: grain
     - bind.config
@@ -53,3 +57,6 @@ base:
   'role:haproxy':
     - match: grain
     - haproxy
+  'role:mirror':
+    - match: grain
+    - mirror
