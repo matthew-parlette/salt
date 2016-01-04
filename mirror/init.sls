@@ -40,6 +40,42 @@ mirror-www:
       - pkg: mirror-packages
       - file: /var/www/html
 
+weather-config:
+  file.managed:
+    - name: /var/www/html/js/config.weather.js
+    - contents: |
+        config.weather = {
+            //units: metric or imperial
+            params: {
+                q: "{{ salt['pillar.get']('mirror:weather:q','Arnold, Maryland') }}",
+                units: "{{ salt['pillar.get']('mirror:weather:units','imperial') }}",
+                lang: "{{ salt['pillar.get']('mirror:weather:lang','en') }}",
+                APPID: "{{ salt['pillar.get']('mirror:weather:APPID','') }}"
+            },
+        }
+    - require:
+      - git: mirror-www
+
+travel-config:
+  file.managed:
+    - name: /var/www/html/js/config.travel.js
+    - contents: |
+        config.travel = {
+            params: {
+                origin: "{{ salt['pillar.get']('mirror:travel:origin','Maryland') }}",
+                destinations: [
+                    {%- for dest in salt['pillar.get']('mirror:travel:destinations', []) %}
+                    "{{ dest }}",
+                    {%- endfor %}
+                ]
+            },
+            api: {
+                key: "{{ salt['pillar.get']('mirror:travel:api:key','API-KEY-HERE') }}"
+            }
+        }
+    - require:
+      - git: mirror-www
+
 # Ubuntu
 {% if grains['os'] == 'Ubuntu' %}
 /home/matt/.bash_login:
