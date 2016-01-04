@@ -7,10 +7,18 @@ easy_install-pip:
     - require:
       - pkg: python-setuptools
 
+python-psutil:
+  pkg.purged:
+    - require_in:
+      - pip: glances
+
 python-dev:
   pkg.installed
 
 glances:
+  pkg.purged:
+    - require_in:
+      - pip: glances
   pip.installed:
     - upgrade: True
     - require:
