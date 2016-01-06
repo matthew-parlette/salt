@@ -12,6 +12,7 @@ base:
     - snmp.conf
     - software.byobu
     - software.vim
+    - shell.zsh
     - timestamp
   'os:Ubuntu':
     - match: grain
