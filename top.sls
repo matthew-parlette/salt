@@ -10,13 +10,13 @@ base:
     - openssh.auth
     - dotfiles
     - snmp.conf
-    - software.byobu
     - software.vim
     - shell.zsh
     - timestamp
   'os:Ubuntu':
     - match: grain
     - motd
+    - software.byobu
   'role:storage-client':
     - match: grain
     - storage.client
