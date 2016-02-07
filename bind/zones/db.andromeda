@@ -1,7 +1,7 @@
 $ORIGIN .
 $TTL 604800	; 1 week
 andromeda		IN SOA	ns.andromeda. ns.andromeda. (
-				20147179   ; serial
+				20160112   ; serial
 				604800     ; refresh (1 week)
 				86400      ; retry (1 day)
 				2419200    ; expire (4 weeks)
@@ -13,4 +13,11 @@ gateway			A	192.168.1.1
 ns			A	192.168.1.4
 pegasus			A	192.168.1.4
 salt			A	192.168.1.4
+enterprise-01           A       192.168.1.51
+enterprise              A       192.168.1.4
+docs                    CNAME   pegasus
 zenoss5.controlcenter   CNAME   controlcenter
+zenoss5.zenoss          CNAME   zenoss
+rabbitmq.zenoss         CNAME   zenoss
+opentsdb.zenoss         CNAME   zenoss
+hbase.zenoss            CNAME   zenoss
