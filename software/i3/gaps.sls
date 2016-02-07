@@ -1,5 +1,6 @@
 include:
   - software.i3
+  - software.i3.blocks
 
 i3-gaps-prerequisites:
   pkg.installed:
