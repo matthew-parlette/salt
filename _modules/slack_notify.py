@@ -269,6 +269,12 @@ def post_message(channel,
     if not from_name:
         log.error('from_name is a required option.')
 
+    log.info("Message is a {}".format(type(message)))
+    if isinstance(message, list):
+        log.info("Message is a list, converting...")
+        message = '\n'.join(message)
+    log.info("Message is {}".format(message))
+
     parameters = {
         'channel': channel,
         'username': from_name,

@@ -9,19 +9,20 @@
 {%- if failed_states %}
 notify:
   local.state.sls:
-    - tgt: {{ data['id'] }}
+    - tgt: pegasus
+#     - tgt: {{ data['id'] }}
     - arg:
       - notify
     - kwarg:
         pillar:
-          message: |
-              {{ data['fun'] }} has failed!
-# The following aborts the slack message
-#               {%- if failed_states %}
-#               Failing states:
-#                   {%- for f in failed_states %}
-#                   - {{ f }}
-#                   {%- endfor %}
-#               {%- endif %}
+          from: {{ data['id'] }}
+          message:
+            - '`{{ data['fun'] }}` has failed!'
+            {%- if failed_states %}
+            - '> Failing states'
+            {%- for f in failed_states %}
+            - '> ```{{ f }}```'
+            {%- endfor %}
+            {%- endif %}
 {%- endif %}
 {%- endif %}
