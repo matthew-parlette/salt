@@ -1,3 +1,3 @@
 include:
   - notify.slack
-  - notify.desktop
+  - notify.slack.network
