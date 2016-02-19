@@ -1,0 +1,7 @@
+reactor:
+  cmd:
+    return:
+      blacklist:
+        - vim
+        - ssh
+        - byobu
