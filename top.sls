@@ -4,6 +4,7 @@ base:
     - salt.minion
   'kernel:Linux':
     - match: grain
+    - groups
     - users.keys
     - openssh
     - openssh.config
@@ -12,6 +13,7 @@ base:
     - snmp.conf
     - software.vim
     - shell.zsh
+    - sudoers.included
     - timestamp
   'os:Ubuntu':
     - match: grain
@@ -32,6 +34,7 @@ base:
     - software.insync
     - software.autokey
     - software.synapse
+    - software.slack
   'role:i3':
     - match: grain
     - software.i3.gaps
@@ -42,14 +45,14 @@ base:
     - software.mumble
   'role:minecraft-server':
     - match: grain
-    - game.minecraft.server
+    - minecraft.server
     - ddclient
   'role:minecraft-map-renderer':
     - match: grain
-    - game.minecraft.map.render
+    - minecraft.map.render
   'role:minecraft-map-host':
     - match: grain
-    - game.minecraft.map.host
+    - minecraft.map.host
     - ddclient
   'role:ask-server':
     - match: grain
@@ -61,3 +64,7 @@ base:
   'role:mirror':
     - match: grain
     - mirror
+  'role:openra-server':
+    - match: grain
+    - openra.server
+    - ddclient
