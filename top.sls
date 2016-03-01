@@ -35,6 +35,9 @@ base:
     - software.autokey
     - software.synapse
     - software.slack
+    - software.indicator-sound-switcher
+    - software.truecrypt
+    - software.haroopad
   'role:i3':
     - match: grain
     - software.i3.gaps
