@@ -38,6 +38,7 @@ base:
     - software.indicator-sound-switcher
     - software.truecrypt
     - software.haroopad
+    - software.java.jdk
   'role:i3':
     - match: grain
     - software.i3.gaps
