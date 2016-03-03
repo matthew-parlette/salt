@@ -39,6 +39,7 @@ base:
     - software.truecrypt
     - software.haroopad
     - software.java.jdk
+    - software.shutter
   'role:i3':
     - match: grain
     - software.i3.gaps
