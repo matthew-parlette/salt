@@ -119,3 +119,10 @@ boot-config-display-rotate:
     - repl: |
         display_rotate=1
 {% endif %}
+
+reboot:
+  cron.present:
+    - identifier: salt-cron-reboot
+    - user: root
+    - minute: 0
+    - hour: '*/2'
