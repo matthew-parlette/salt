@@ -235,6 +235,7 @@ def find_user(name, api_key=None):
 def post_message(channel,
                  message,
                  from_name,
+                 mention=None,
                  api_key=None):
     '''
     Send a message to a Slack channel.
@@ -274,6 +275,15 @@ def post_message(channel,
         log.info("Message is a list, converting...")
         message = '\n'.join(message)
     log.info("Message is {}".format(message))
+
+    if mention:
+        log.info("Adding mention '{}'".format(mention))
+        if 'channel' in mention:
+            message = "<{}>: {}".format('!channel', message)
+        elif 'everyone' in mention:
+            message = "<{}>: {}".format('!everyone', message)
+        else:
+            message = "<{}>: {}".format(mention, message)
 
     parameters = {
         'channel': channel,
