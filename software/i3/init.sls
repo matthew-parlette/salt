@@ -1,5 +1,7 @@
 include:
   - pip
+  - git
+  - software.i3.notifications
 
 i3:
   pkg.installed
@@ -7,11 +9,12 @@ i3:
 compton:
   pkg.installed
 
+# feh for desktop wallpaper
+feh:
+  pkg.installed
+
 {%- set user = "matt" %}
 {%- set path = "/tmp/dex" %}
-
-git:
-  pkg.installed
 
 sphinx:
   pip.installed
