@@ -40,10 +40,12 @@ base:
     - software.haroopad
     - software.java.jdk
     - software.shutter
+    - software.nemo
   'role:i3':
     - match: grain
     - software.i3.gaps
     - software.i3.i3lock-blur
+    - software.nemo.disable-desktop
   'role:gaming':
     - match: grain
     - software.steam
