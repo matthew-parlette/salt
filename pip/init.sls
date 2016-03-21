@@ -5,7 +5,7 @@ get-pip:
     - group: root
     - mode: 755
     - source: https://bootstrap.pypa.io/get-pip.py
-    - source_hash: md5=fe348f492a4faf63572449a8baf37328
+    - source_hash: md5=8a0fa2bd9e5d762daaf56f32fb3f9b3e
   cmd.run:
     - name: python /tmp/get-pip.py
     - user: root
