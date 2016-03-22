@@ -50,4 +50,3 @@ i3lock-blur:
     - require:
       - pkg: i3
       - git: i3lock-blur
-

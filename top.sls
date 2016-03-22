@@ -4,6 +4,7 @@ base:
     - salt.minion
   'kernel:Linux':
     - match: grain
+    - shell.zsh
     - groups
     - users.keys
     - openssh
@@ -12,7 +13,7 @@ base:
     - dotfiles
     - snmp.conf
     - software.vim
-    - shell.zsh
+    - software.glances
     - sudoers.included
     - timestamp
   'os:Ubuntu':
@@ -44,7 +45,7 @@ base:
   'role:i3':
     - match: grain
     - software.i3.gaps
-    - software.i3.i3lock-blur
+    # - software.i3.i3lock-blur
     - software.nemo.disable-desktop
   'role:gaming':
     - match: grain
