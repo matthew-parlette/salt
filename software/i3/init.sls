@@ -34,13 +34,21 @@ dex:
       - pkg: git
       - ssh_known_hosts: dex
       - file: {{ path }}
-  cmd.run:
-    - name: make;make install
-    - user: {{ user }}
-    - group: {{ user }}
-    - cwd: {{ path }}
+  file.replace:
+    - name: /tmp/dex/Makefile
+    - flags:
+      - MULTILINE
+    - pattern: '^\s*(@sphinx-build|@install.*man/dex.1).*$'
+    - repl: ''
     - require:
       - git: dex
+  cmd.run:
+    - name: make;make install
+    - user: root
+    - group: root
+    - cwd: {{ path }}
+    - require:
+      - file: dex
       - pip: sphinx
 
 {{ path }}:
