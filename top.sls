@@ -2,6 +2,9 @@ base:
   '*':
     - grains
     - salt.minion
+  'role:salt-master':
+    - match: grain
+    - salt.master
   'kernel:Linux':
     - match: grain
     - shell.zsh
@@ -25,11 +28,15 @@ base:
     - storage.client
   'role:dns-master':
     - match: grain
-    - bind.config
+    - bind.ddns
   'role:vagrant':
     - match: grain
     - software.virtualbox
     - software.vagrant
+  'role:development':
+    - match: grain
+    - node
+    - software.yeoman
   'G@kernel:Linux and G@role:desktop':
     - match: compound
     - software.insync
@@ -76,3 +83,10 @@ base:
     - match: grain
     - openra.server
     - ddclient
+  'role:openvpn-server':
+    - match: grain
+    - openvpn
+  'role:zenoss-cc-master':
+    - match: grain
+    - zenoss.user
+    # - controlcenter
