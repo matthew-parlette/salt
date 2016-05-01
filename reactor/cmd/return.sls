@@ -1,4 +1,4 @@
-{%- set blacklist = salt['pillar.get']('reactor:cmd:return:blacklist', []) %}
+{%- set blacklist = salt['pillar.get']('reactor:cmd:return:blacklist', ['vim']) %}
 {%- if 'process' in data['data'] and data['data']['process'] not in blacklist %}
 {%- if 'duration' in data['data'] and data['data']['duration'] > 15 %}
 notify:
