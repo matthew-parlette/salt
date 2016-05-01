@@ -16,8 +16,6 @@ salt			A	192.168.1.4
 enterprise-01           A       192.168.1.51
 enterprise              A       192.168.1.4
 docs                    CNAME   pegasus
+assistant               CNAME   pegasus
 zenoss5.controlcenter   CNAME   controlcenter
 zenoss5.zenoss          CNAME   zenoss
-rabbitmq.zenoss         CNAME   zenoss
-opentsdb.zenoss         CNAME   zenoss
-hbase.zenoss            CNAME   zenoss
