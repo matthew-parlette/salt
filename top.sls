@@ -89,4 +89,3 @@ base:
   'role:zenoss-cc-master':
     - match: grain
     - zenoss.user
-    # - controlcenter
