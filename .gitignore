@@ -1,2 +1,5 @@
 bootstrap/files/install_salt.sh
 software/chrome/files/*.deb
+
+# vim
+*.swp
