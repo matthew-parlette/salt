@@ -13,7 +13,21 @@ python-psutil:
       - pip: glances
 
 python-dev:
+  {%- if grains['os_family'] == 'Debian' %}
   pkg.installed
+  {%- elif grains['os_family'] == 'RedHat' %}
+  pkg.installed:
+    - name: python-devel
+  {%- endif %}
+
+dev-tools:
+  {%- if grains['os_family'] == 'Debian' %}
+  pkg.installed:
+    - name: build-essential
+  {%- elif grains['os_family'] == 'RedHat' %}
+  pkg.group_installed:
+    - name: development tools
+  {%- endif %}
 
 glances:
   pkg.purged:
@@ -24,3 +38,4 @@ glances:
     - require:
       - cmd: easy_install-pip
       - pkg: python-dev
+      - pkg: dev-tools
