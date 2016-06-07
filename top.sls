@@ -89,3 +89,6 @@ base:
   'role:zenoss-cc-master':
     - match: grain
     - zenoss.user
+  'role:nfs-server':
+    - match: grain
+    - nfs.server
