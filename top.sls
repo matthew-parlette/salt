@@ -92,3 +92,7 @@ base:
   'role:nfs-server':
     - match: grain
     - nfs.server
+  'role:nfs-client':
+    - match: grain
+    - nfs.client
+    - nfs.mount
