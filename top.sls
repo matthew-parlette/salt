@@ -29,6 +29,10 @@ base:
   'role:dns-master':
     - match: grain
     - bind.ddns
+  'role:dhcp-master':
+    - match: grain
+    - dhcpd.keys
+    - dhcpd.config
   'role:vagrant':
     - match: grain
     - software.virtualbox
