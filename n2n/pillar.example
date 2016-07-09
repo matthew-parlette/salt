@@ -1,9 +1,0 @@
-n2n:
-  supernode:
-    host: supernode-address
-    port: supernode-port
-  community: community-name
-  password: community-password
-  hosts:
-    host1: n2n-ip-address
-    host2: n2n-ip-address
