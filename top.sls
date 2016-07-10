@@ -53,7 +53,7 @@ base:
     - software.java.jdk
     - software.shutter
     - software.nemo
-  'role:i3':
+  'role:desktop':
     - match: grain
     - software.i3.gaps
     # - software.i3.i3lock-blur
