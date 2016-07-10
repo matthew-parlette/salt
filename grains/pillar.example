@@ -1,5 +1,0 @@
-nodes:
-  myhost:
-    roles:
-      - server
-      - salt-master

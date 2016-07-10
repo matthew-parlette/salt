@@ -1,9 +1,0 @@
-{% set host = grains['id'] -%}
-{% set roles = salt['pillar.get']('nodes:' + host + ':roles',[]) -%}
-
-{% if roles -%}
-role:
-  {% for role in roles -%}
-  - {{ role }}
-  {% endfor -%}
-{% endif -%}
