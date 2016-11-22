@@ -26,22 +26,10 @@ def __virtual__():
 
     :return: The virtual name of the module.
     '''
-    try:
-        import pynotify
-        # call(['notify-send'])
-        # log.debug("notify-send appears to be available")
-    except OSError as e:
-        if e.errno == os.errno.ENOENT:
-            # file not found
-            return (False, 'notify-send does not exist')
-        else:
-            # something went wrong running notify-send
-            return (False, 'notify-send did not work')
     if HAS_PYNOTIFY:
         return __virtualname__
     else:
         return (False, 'pynotify is not available')
-    return __virtualname__
 
 
 def notify(message,
@@ -73,18 +61,6 @@ def notify(message,
     log.debug("Message is {}".format(message))
     result['message'] = message
 
-    # cmd = ['su', '-', 'matt', '-c', 'notify-send', title, message]
-    # result['cmd'] = cmd
-    # result['test'] = Popen(['grep -zi DBUS /proc/$(pgrep ^i3\$)/environ',
-    #                         '|', 'sed -r -e s/^DBUS_SESSION_BUS_ADDRESS=//']
-    #                        ).communicate()[0]
-    # result['test'] = Popen(['pgrep', '^i3\$']).communicate()[0]
-    # env = {
-    #     'PATH': '/usr/bin',
-    #     'DBUS_SESSION_BUS_ADDRESS': ''}
-    # log.debug("Environment set to {}".format(str(env)))
-    # result['env'] = env
-
     os.environ['DISPLAY'] = ':0.0'
 
     try:
@@ -92,10 +68,6 @@ def notify(message,
         notification = pynotify.Notification(title, message)
         notification.show()
 
-        # log.debug("Calling notify-send on {}".format(socket.gethostname()))
-        # p = Popen(cmd, stdout=PIPE, stderr=PIPE)
-        # result['stdout'], result['stderr'] = p.communicate()
-        # result['return'] = p.returncode
     except Exception as e:
         log.error("Exception in Popen:\n{}".format(str(e)))
         return False
