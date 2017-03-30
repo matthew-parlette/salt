@@ -18,8 +18,9 @@ base:
     - software.vim
     - software.glances
     - sudoers.included
+    - software.bup
     - timestamp
-  'os:Ubuntu':
+  'os:Ubuntu and G@osmajorrelease:14':
     - match: grain
     - motd
     - software.byobu
@@ -32,7 +33,20 @@ base:
   'role:dhcp-master':
     - match: grain
     - dhcpd.keys
-    - dhcpd.config
+    # - dhcpd.config
+  'role:openstack-controller':
+    - match: grain
+    # - mysql
+    # - mysql.remove_test_database
+    - pymysql
+    - mongodb
+    - rabbitmq
+    - memcached.config
+    - memcached.python_memcached
+    - openstack.client
+    - keystone
+    - glance
+    - nova.controller
   'role:vagrant':
     - match: grain
     - software.virtualbox
@@ -55,8 +69,9 @@ base:
     - software.nemo
   'role:desktop':
     - match: grain
-    - software.i3.gaps
-    # - software.i3.i3lock-blur
+    - i3.gaps
+    - i3.bar.i3pystatus
+    - i3.lock.blur
     - software.nemo.disable-desktop
   'role:gaming':
     - match: grain
@@ -90,9 +105,6 @@ base:
   'role:openvpn-server':
     - match: grain
     - openvpn
-  'role:zenoss-cc-master':
-    - match: grain
-    - zenoss.user
   'role:nfs-server':
     - match: grain
     - nfs.server
@@ -100,3 +112,31 @@ base:
     - match: grain
     - nfs.client
     - nfs.mount
+  'role:miriam':
+    - match: grain
+    - miriam
+  'role:n2n-supernode':
+    - match: grain
+    - n2n.supernode
+  'role:n2n-node':
+    - match: grain
+    - n2n.node
+    - n2n.node.hosts
+  'role:plex-server':
+    - match: grain
+    - software.plex.server
+  'role:mumble-server':
+    - match: grain
+    - software.mumble.server
+  'role:tribute-dev':
+    - match: grain
+    - ddclient
+    - tribute.development
+  'role:tribute':
+    - match: grain
+    - ddclient
+    - tribute
+  'role:starbound':
+    - match: grain
+    - ddclient
+    - starbound
