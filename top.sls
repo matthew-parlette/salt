@@ -140,3 +140,10 @@ base:
     - match: grain
     - ddclient
     - starbound
+  'role:santa-dev':
+    - match: grain
+    - santa.development
+  'role:santa':
+    - match: grain
+    - santa
+    - software.croniter
