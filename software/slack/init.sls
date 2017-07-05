@@ -1,7 +1,7 @@
 slack-desktop:
   pkg.installed:
     - sources:
-      - slack-desktop: https://downloads.slack-edge.com/linux_releases/slack-desktop-2.0.2-amd64.deb
+      - slack-desktop: https://downloads.slack-edge.com/linux_releases/slack-desktop-2.3.4-amd64.deb
 
 scudcloud:
   pkgrepo.managed:
