@@ -1,28 +1,20 @@
 {%- if data['fun'] == 'state.highstate' %}
-# Gather failing states
 {%- set failed_states = [] %}
 {%- for state, result in data['return'].iteritems() %}
     {%- if not result['result'] %}
-        {%- do failed_states.append(state) %}
+        {%- do failed_states.append(state.split('_|-')[1]) %}
     {%- endif %}
 {%- endfor %}
-{%- if failed_states %}
-notify:
+{% if failed_states %}
+notify-mattermost:
   local.state.sls:
-    - tgt: pegasus
-#     - tgt: {{ data['id'] }}
+    - tgt: {{ data['id'] }}
     - arg:
-      - notify
+      - notify.mattermost.channel.saltstack
     - kwarg:
         pillar:
-          from: {{ data['id'] }}
           message:
-            - '`{{ data['fun'] }}` has failed!'
-            {%- if failed_states %}
-            - '> Failing states'
-            {%- for f in failed_states %}
-            - '> ```{{ f }}```'
-            {%- endfor %}
-            {%- endif %}
+            - '{{ data['fun'] }} has failed:'
+            - '{{ failed_states|join(', ') }}'
 {%- endif %}
 {%- endif %}
