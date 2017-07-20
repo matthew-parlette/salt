@@ -8,6 +8,7 @@ vagrant:
     - name: bitbucket.org
     - user: matt
     - fingerprint: 97:8c:1b:f2:6f:14:6b:5c:3b:ec:aa:46:46:74:7c:40
+    - fingerprint_hash_type: md5
     - enc: ssh-rsa
   git.latest:
     - name: git@bitbucket.org:matthew-parlette/vagrant.git
