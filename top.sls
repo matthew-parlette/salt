@@ -147,3 +147,6 @@ base:
     - match: grain
     - santa
     - software.croniter
+  'role:mattermost':
+    - match: grain
+    - mattermost
