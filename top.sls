@@ -147,3 +147,6 @@ base:
   'role:mattermost':
     - match: grain
     - mattermost
+  'role:grav':
+    - match: grain
+    - grav
