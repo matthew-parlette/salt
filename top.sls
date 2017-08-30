@@ -19,6 +19,8 @@ base:
     - software.glances
     - sudoers.included
     - software.bup
+    - software.colorls
+    - software.nerd-fonts
     - timestamp
   'os:Ubuntu and G@osmajorrelease:14':
     - match: grain
