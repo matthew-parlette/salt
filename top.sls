@@ -131,24 +131,31 @@ base:
     - match: grain
     - ddclient
     - tribute.development
+    - docker.clean
   'role:tribute':
     - match: grain
     - ddclient
     - tribute
+    - docker.clean
   'role:starbound':
     - match: grain
     - ddclient
     - starbound
+    - docker.clean
   'role:santa-dev':
     - match: grain
     - santa.development
+    - docker.clean
   'role:santa':
     - match: grain
     - santa
     - software.croniter
+    - docker.clean
   'role:mattermost':
     - match: grain
     - mattermost
+    - docker.clean
   'role:grav':
     - match: grain
     - grav
+    - docker.clean
