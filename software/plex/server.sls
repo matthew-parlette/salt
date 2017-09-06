@@ -1,7 +1,23 @@
+include:
+  - git
+
 plexmediaserver:
-  pkg.installed:
-    - sources:
-      - plexmediaserver: https://downloads.plex.tv/plex-media-server/1.5.5.3634-995f1dead/plexmediaserver_1.5.5.3634-995f1dead_amd64.deb
   service.running:
+    - watch:
+      - cmd: plexupdate
+
+plexupdate:
+  git.latest:
+    - name: https://github.com/mrworf/plexupdate.git
+    - target: /tmp/plexupdate
     - require:
-      - pkg: plexmediaserver
+      - pkg: git
+      - file: plexupdate
+  cmd.run:
+    - name: /tmp/plexupdate/plexupdate.sh -ad
+    - cwd: /tmp/plexupdate
+    - onchanges:
+      - git: plexupdate
+  file.directory:
+    - name: /tmp/plexupdate
+    - makedirs: True
