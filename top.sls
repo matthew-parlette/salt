@@ -5,6 +5,7 @@ base:
   'role:salt-master':
     - match: grain
     - salt.master
+    - influxdb.python
   'kernel:Linux':
     - match: grain
     - shell.zsh
@@ -158,4 +159,8 @@ base:
   'role:grav':
     - match: grain
     - grav
+    - docker.clean
+  'role:dokuwiki':
+    - match: grain
+    - dokuwiki
     - docker.clean
