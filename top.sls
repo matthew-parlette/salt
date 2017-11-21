@@ -133,11 +133,13 @@ base:
     - ddclient
     - tribute.development
     - docker.clean
+    - letsencrypt
   'role:tribute':
     - match: grain
     - ddclient
     - tribute
     - docker.clean
+    - letsencrypt
   'role:starbound':
     - match: grain
     - ddclient
@@ -147,15 +149,18 @@ base:
     - match: grain
     - santa.development
     - docker.clean
+    - letsencrypt
   'role:santa':
     - match: grain
     - santa
     - software.croniter
     - docker.clean
+    - letsencrypt
   'role:mattermost':
     - match: grain
     - mattermost
     - docker.clean
+    - letsencrypt
   'role:grav':
     - match: grain
     - grav
