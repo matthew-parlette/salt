@@ -169,3 +169,9 @@ base:
     - match: grain
     - dokuwiki
     - docker.clean
+  'role:openproject':
+    - match: grain
+    - openproject
+    - docker.clean
+    - letsencrypt
+    - letsencrypt.combine
