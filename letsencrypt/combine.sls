@@ -6,8 +6,8 @@ combine-files-{{ domain }}:
     - name: /etc/letsencrypt/live/{{ domain }}/fullchain-privkey.pem
     - source: /etc/letsencrypt/live/{{ domain }}/fullchain.pem
     - force: True
-    - require:
-      - cmd: certbot_{{ domain }}
+    - onlyif:
+      - ls /etc/letsencrypt/live/{{ domain }}/fullchain.pem
   cmd.run:
     - name: cat /etc/letsencrypt/live/{{ domain }}/privkey.pem >> /etc/letsencrypt/live/{{ domain }}/fullchain-privkey.pem
     - require:
