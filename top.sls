@@ -5,6 +5,7 @@ base:
   'role:salt-master':
     - match: grain
     - salt.master
+    - salt.ssh
     - influxdb.python
   'kernel:Linux':
     - match: grain
@@ -17,11 +18,9 @@ base:
     - dotfiles
     - snmp.conf
     - software.vim
-    - software.glances
     - sudoers.included
     - software.bup
     - software.colorls
-    - software.nerd-fonts
     - timestamp
   'os:Ubuntu and G@osmajorrelease:14':
     - match: grain
@@ -66,7 +65,9 @@ base:
     - software.truecrypt
     - software.java.jdk
     - software.shutter
+    - software.glances
     - software.nemo
+    - software.nerd-fonts
   'role:desktop':
     - match: grain
     - i3.gaps
@@ -95,6 +96,8 @@ base:
   'role:haproxy':
     - match: grain
     - haproxy
+    - letsencrypt
+    - letsencrypt.combine
   'role:mirror':
     - match: grain
     - mirror
@@ -133,13 +136,11 @@ base:
     - ddclient
     - tribute.development
     - docker.clean
-    - letsencrypt
   'role:tribute':
     - match: grain
     - ddclient
     - tribute
     - docker.clean
-    - letsencrypt
   'role:starbound':
     - match: grain
     - ddclient
@@ -149,18 +150,15 @@ base:
     - match: grain
     - santa.development
     - docker.clean
-    - letsencrypt
   'role:santa':
     - match: grain
     - santa
     - software.croniter
     - docker.clean
-    - letsencrypt
   'role:mattermost':
     - match: grain
     - mattermost
     - docker.clean
-    - letsencrypt
   'role:grav':
     - match: grain
     - grav
@@ -171,7 +169,7 @@ base:
     - docker.clean
   'role:openproject':
     - match: grain
+    - docker
+    - docker.py
     - openproject
     - docker.clean
-    - letsencrypt
-    - letsencrypt.combine
