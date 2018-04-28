@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ pod['metadata']['name'] }}
+spec:
+  containers:
+  {%- for container, values in pod['metadata']['containers'].iteritems() %}
+  - name: values['name']
+    image: values['image']
+    {%- for path, settings in values['volumes'] %}
+    volumeMounts:
+    - mountPath: {{ path }}
+      name: {{ settings['name'] }}
+      readOnly: {{ settings['readonly']|lower }}
+    {%- endfor %}
+  {%- endfor %}
+  volumes:
+  - name: cephfs
+    cephfs:
+      monitors:
+      - 10.16.154.78:6789
+      - 10.16.154.82:6789
+      - 10.16.154.83:6789
+      user: admin
+      secretRef:
+        name: ceph-secret
+      readOnly: true
