@@ -6,7 +6,6 @@ base:
     - match: grain
     - salt.master
     - salt.ssh
-    - influxdb.python
   'kernel:Linux':
     - match: grain
     - shell.zsh
@@ -19,13 +18,13 @@ base:
     - snmp.conf
     - software.vim
     - sudoers.included
-    - software.bup
-    - software.colorls
-    - timestamp
+    - influxdb.python
+    - python.jira
   'os:Ubuntu and G@osmajorrelease:14':
     - match: grain
-    - motd
-    - software.byobu
+    - software.colorls
+    # - motd
+    # - software.byobu
   'role:storage-client':
     - match: grain
     - storage.client
@@ -98,6 +97,7 @@ base:
     - haproxy
     - letsencrypt
     - letsencrypt.combine
+    - ssh.stopped
   'role:mirror':
     - match: grain
     - mirror
@@ -173,3 +173,22 @@ base:
     - docker.py
     - openproject
     - docker.clean
+  'role:grafana':
+    - match: grain
+    - grafana
+  'role:influxdb':
+    - match: grain
+    - influxdb
+  'role:proxmox':
+    - match: grain
+    # - letsencrypt
+    # - proxmox.cert
+    - proxmox.repo
+  'role:influxdb-minion':
+    - match: grain
+    - influxdb.databases
+  'role:kubernetes-client':
+    - match: grain
+    - kubernetes.repo
+    - kubernetes.kubeconfig
+    - kubernetes.helm
