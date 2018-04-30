@@ -4,3 +4,4 @@ bind/zones/db*
 
 # vim
 *.swp
+*.pyc
