@@ -1,0 +1,2 @@
+#!/bin/bash
+eval "sudo watch -n 5 'salt-run jobs.active'"
