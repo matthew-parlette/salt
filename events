@@ -1,0 +1,2 @@
+#!/bin/bash
+sudo salt-run state.event pretty=true
