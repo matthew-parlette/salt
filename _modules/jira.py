@@ -61,7 +61,7 @@ def _login(host, username, password):
                                              password or __salt__['config.option']('jira.password')))
 
 
-def _issues(open=True, closed=False, ignore_project=[], host=None, username=None, password=None):
+def _issues(open=True, closed=False, projects=[], ignore_project=[], host=None, username=None, password=None):
     """
     Return issues found via search
     """
@@ -73,12 +73,27 @@ def _issues(open=True, closed=False, ignore_project=[], host=None, username=None
         resolution.append("Won't Do")
     search = []
     if resolution: search.append("resolution in ({})".format(",".join(resolution)))
+    if projects: search.append("project in ({})".format(",".join(projects)))
     for ignore in ignore_project:
         search.append("project != {}".format(ignore))
     log.debug("Searching for existing issues with search term '{}'...".format(" AND ".join(search)))
-    return api.search_issues("{}".format(" AND ".join(search)))
+    results = []
+    start_at = 0
+    max_results = 50
+    done = False
+    while not done:
+        new = api.search_issues("{}".format(" AND ".join(search)), startAt=start_at, maxResults=max_results)
+        log.debug("Found {} more results...".format(len(new)))
+        results += new
+        if len(new) < max_results:
+            done = True
+            log.debug("Found last batch of issues...")
+        else:
+            start_at += max_results
+            log.debug("startAt updated to {}...".format(start_at))
+    return results
 
-def issues(include_closed=False, ignore_project=[], host=None, username=None, password=None):
+def issues(include_closed=False, projects=[], ignore_project=[], host=None, username=None, password=None):
     '''
     List all open issues. Optionally include closed issues with closed=True
 
@@ -96,9 +111,9 @@ def issues(include_closed=False, ignore_project=[], host=None, username=None, pa
 
         salt '*' jira.issues include_closed=True
     '''
-    issues = _issues(open=True, closed=False, ignore_project=ignore_project)
-    log.debug("Returning {} issues: {}".format(len(issues),issues))
-    return issues # ["{}: {}".format(issue.key, issue.fields.summary) for issue in issues]
+    result = _issues(open=True, closed=False, projects=projects, ignore_project=ignore_project)
+    log.debug("Returning {} issues: {}".format(len(result),result))
+    return [{"key": issue.key, "summary": issue.fields.summary} for issue in result]
 
 def projects(host=None, username=None, password=None):
     '''
@@ -145,7 +160,7 @@ def create(summary, project, description="", issue_type="Task", priority="Medium
     """
     api = _login(host, username, password)
     exists = []
-    all_issues = issues(include_closed=False, ignore_project=ignore_project)
+    all_issues = _issues(open=True, closed=False, projects=[project], ignore_project=ignore_project)
     for issue in all_issues:
         log.debug("Found issue {} with summary {}".format(issue.key, unicode(issue.fields.summary)))
     exists = [issue for issue in all_issues
