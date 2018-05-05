@@ -61,7 +61,7 @@ def _login(host, username, password):
                                              password or __salt__['config.option']('jira.password')))
 
 
-def _issues(open=True, closed=False, host=None, username=None, password=None):
+def _issues(open=True, closed=False, ignore_project=[], host=None, username=None, password=None):
     """
     Return issues found via search
     """
@@ -73,9 +73,12 @@ def _issues(open=True, closed=False, host=None, username=None, password=None):
         resolution.append("Won't Do")
     search = []
     if resolution: search.append("resolution in ({})".format(",".join(resolution)))
+    for ignore in ignore_project:
+        search.append("project != {}".format(ignore))
+    log.debug("Searching for existing issues with search term '{}'...".format(" AND ".join(search)))
     return api.search_issues("{}".format(" AND ".join(search)))
 
-def issues(include_closed=False, host=None, username=None, password=None):
+def issues(include_closed=False, ignore_project=[], host=None, username=None, password=None):
     '''
     List all open issues. Optionally include closed issues with closed=True
 
@@ -93,9 +96,9 @@ def issues(include_closed=False, host=None, username=None, password=None):
 
         salt '*' jira.issues include_closed=True
     '''
-    issues = _issues(open=True, closed=False)
-    log.debug("Returning issues: {}".format(issues))
-    return ["{}: {}".format(issue.key, issue.fields.summary) for issue in issues]
+    issues = _issues(open=True, closed=False, ignore_project=ignore_project)
+    log.debug("Returning {} issues: {}".format(len(issues),issues))
+    return issues # ["{}: {}".format(issue.key, issue.fields.summary) for issue in issues]
 
 def projects(host=None, username=None, password=None):
     '''
@@ -117,7 +120,9 @@ def projects(host=None, username=None, password=None):
     api = _login(host, username, password)
     return ["{}: {}".format(project.key, project.name) for project in api.projects()]
 
-def create(summary, project, description="", issue_type="Task", priority="Medium", comment_if_exists=True, force=False, host=None, username=None, password=None):
+def create(summary, project, description="", issue_type="Task", priority="Medium",
+           comment_if_exists=True, force=False, ignore_project=[],
+           host=None, username=None, password=None):
     """
     Create an issue if it doesn't already exist. If force is provided, then an issue will be created regardless of the search.
 
@@ -140,7 +145,11 @@ def create(summary, project, description="", issue_type="Task", priority="Medium
     """
     api = _login(host, username, password)
     exists = []
-    exists = [issue for issue in _issues(open=True, closed=False) if unicode(issue.fields.summary) == unicode(summary)]
+    all_issues = issues(include_closed=False, ignore_project=ignore_project)
+    for issue in all_issues:
+        log.debug("Found issue {} with summary {}".format(issue.key, unicode(issue.fields.summary)))
+    exists = [issue for issue in all_issues
+              if unicode(issue.fields.summary) == unicode(summary)]
     if exists and not force:
         if comment_if_exists:
             log.debug("Found existing issue, adding comment...")
