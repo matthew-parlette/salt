@@ -20,3 +20,5 @@ changes-detected:
           {%- endfor %}
       - issue_type: Task
       - priority: Medium
+      - ignore_project:
+        - SAND
