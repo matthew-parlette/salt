@@ -1,0 +1,10 @@
+# -*- coding: utf-8 -*-
+# vim: ft=yaml
+
+synapse:
+  pkg: synapse
+  config: '/home/synapse/.synapse/homeserver.yaml'
+  user: synapse
+  service:
+    name: synapse
+  enable_registration: False

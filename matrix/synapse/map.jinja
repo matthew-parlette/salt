@@ -1,0 +1,29 @@
+# -*- coding: utf-8 -*-
+# vim: ft=jinja
+
+{## Start with defaults from defaults.yaml ##}
+{% import_yaml 'matrix/synapse/defaults.yaml' as default_settings %}
+
+{##
+Setup variables using grains['os_family'] based logic, only add key:values
+that differ from what is in defaults.yaml
+##}
+{% set os_family_map = salt['grains.filter_by']({
+        'Debian': {},
+        'Suse': {},
+        'Arch': {},
+        'RedHat': {},
+  }
+  , grain="os_family"
+  , merge=salt['pillar.get']('synapse:lookup'))
+%}
+{## Merge the flavor_map to the default settings ##}
+{% do default_settings.synapse.update(os_family_map) %}
+
+{## Merge in synapse:lookup pillar ##}
+{% set synapse = salt['pillar.get'](
+        'synapse',
+        default=default_settings.synapse,
+        merge=True
+    )
+%}
