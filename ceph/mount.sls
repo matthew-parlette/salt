@@ -1,11 +1,11 @@
 include:
   - ceph.common
 
-ceph-fs-common:
+ceph-common:
   pkg.installed
 
 admin-secret:
-  cmd.wait:
+  cmd.run:
     - name: ceph-authtool --name client.admin /etc/ceph/ceph.client.admin.keyring --print-key > /etc/ceph/admin.secret
     - require:
       - file: /etc/ceph/ceph.client.admin.keyring
@@ -23,7 +23,7 @@ admin-secret:
       - 'name=admin'
       - 'secretfile=/etc/ceph/admin.secret'
     - require:
-      - pkg: ceph-fs-common
+      - pkg: ceph-common
       - file: common_config
       - cmd: admin-secret
 {%- endfor %}
